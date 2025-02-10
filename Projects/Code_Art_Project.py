@@ -49,7 +49,7 @@ t.penup ()
 t.goto (0,0)
 t.pendown ()
 
-#this draws the yellow square) 
+#this draws the yellow square
 colors = ["PapayaWhip","LightGoldenrodYellow", "LemonChiffon" , "LightYellow"]
 for i in range (100):
     t.color(colors[i % 3])

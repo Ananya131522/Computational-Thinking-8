@@ -3,7 +3,7 @@ import codesters, random
 from codesters import StageClass
 stage = StageClass ()
 stage.disable_floor()
-player = codesters.Sprite("singer (1)", 0,-150)
+player = codesters.Sprite("singer (1) (1)", 0,-150)
 player.set_size(0.2)
 stage.set_background("erastour")
 #starting object speed
@@ -14,7 +14,7 @@ points = 0
 def falling_object():
     global object_speed, object_speed, points
     
-    if points != 30:
+    if points <= 30:
         x = random.randint(-250,250)
         y = random.randint(-250,250)
         object = codesters.Sprite("butterfly (1)", 0, 600)
@@ -27,16 +27,14 @@ stage.event_interval(falling_object, 5)
 def collision(player,object):
     global points
     if object.get_image_name() == "butterfly (1)":
-
         stage.remove_sprite(object)
         points += 1
-        if points == 30:
-            player.say(f"Good job! Now go get on stage!")
+        if points >= 30:
+            player.say(f"Good job! Now go get on stage!", 0.5, "White")
         else:
-            player.say(f"{points}points", 0.5)
+            player.say(f"{points}points", 0.5, "White")
 player.event_collision(collision)
 #Section 4: Controls
-
 #Right Key
 def go_right():
     player.move_right(10)
